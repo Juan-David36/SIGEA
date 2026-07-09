@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -91,5 +92,25 @@ public class CategoriaControlador {
 
         categoriaServicio.eliminar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    //  PATCH /api/v1/categorias/{id}/activar
+
+    @PatchMapping("/{id}/activar")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<CategoriaRespuestaDTO> activar(@PathVariable Long id) {
+
+        CategoriaRespuestaDTO respuesta = categoriaServicio.activar(id);
+        return ResponseEntity.ok(respuesta);
+    }
+
+    //  PATCH /api/v1/categorias/{id}/desactivar
+
+    @PatchMapping("/{id}/desactivar")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<CategoriaRespuestaDTO> desactivar(@PathVariable Long id) {
+
+        CategoriaRespuestaDTO respuesta = categoriaServicio.desactivar(id);
+        return ResponseEntity.ok(respuesta);
     }
 }

@@ -115,9 +115,9 @@ export class InventarioComponent implements OnInit {
     const incluirBaja = this.incluirDadosDeBaja();
     return list.filter((e) => {
       if (!incluirBaja && !e.activo) return false;
-      if (cat !== '' && e.categoriaId !== cat) return false;
+      if (cat !== '' && e.categoriaId !== +cat) return false;
       if (est && e.estado !== est) return false;
-      if (amb !== '' && e.ambienteId !== amb) return false;
+      if (amb !== '' && e.ambienteId !== +amb) return false;
       if (q && !e.nombre.toLowerCase().includes(q) && !(e.placa ?? '').toLowerCase().includes(q)) return false;
       return true;
     });

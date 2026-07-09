@@ -58,6 +58,11 @@ export const routes: Routes = [
         canActivate: [adminGuard],
       },
       {
+        path: 'categorias',
+        loadComponent: () => import('./pages/categorias/categorias.component').then(m => m.CategoriasComponent),
+        canActivate: [adminGuard],
+      },
+      {
         path: 'reportes',
         loadComponent: () => import('./pages/reportes/reportes.component').then(m => m.ReportesComponent),
         canActivate: [adminOrInstructorGuard],

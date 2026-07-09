@@ -36,15 +36,15 @@
 
     <div class="toolbar-filters">
       <select [ngModel]="filterCategoria()" (ngModelChange)="filterCategoria.set($event)" class="filter-select">
-        <option value="">Todas las categorías</option>
+        <option [ngValue]="''">Todas las categorías</option>
         @for (c of categorias(); track c.id) {
-          <option [value]="c.id">{{ c.nombre }}</option>
+          <option [ngValue]="c.id">{{ c.nombre }}</option>
         }
       </select>
       <select [ngModel]="filterAmbiente()" (ngModelChange)="filterAmbiente.set($event)" class="filter-select">
-        <option value="">Todas las ubicaciones</option>
+        <option [ngValue]="''">Todas las ubicaciones</option>
         @for (a of ambientes(); track a.id) {
-          <option [value]="a.id">{{ a.nombre }}</option>
+          <option [ngValue]="a.id">{{ a.nombre }}</option>
         }
       </select>
       <select [ngModel]="filterEstado()" (ngModelChange)="filterEstado.set($event)" class="filter-select">

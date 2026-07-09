@@ -109,6 +109,30 @@ public class CategoriaServicio {
         categoriaRepository.save(categoria);
     }
 
+    //  ACTIVAR 
+
+    @Transactional
+    public CategoriaRespuestaDTO activar(Long id) {
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Categoría", id));
+
+        categoria.setActivo(true);
+        Categoria guardada = categoriaRepository.save(categoria);
+        return convertirADTO(guardada);
+    }
+
+    //  DESACTIVAR 
+
+    @Transactional
+    public CategoriaRespuestaDTO desactivar(Long id) {
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Categoría", id));
+
+        categoria.setActivo(false);
+        Categoria guardada = categoriaRepository.save(categoria);
+        return convertirADTO(guardada);
+    }
+
     //  MÉTODO PRIVADO: Convertir Entidad → DTO 
 
     private CategoriaRespuestaDTO convertirADTO(Categoria categoria) {

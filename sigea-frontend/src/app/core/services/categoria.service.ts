@@ -21,4 +21,20 @@ export class CategoriaService {
   buscarPorId(id: number): Observable<Categoria> {
     return this.http.get<Categoria>(`${this.apiUrl}/${id}`);
   }
+
+  crear(dto: { nombre: string; descripcion?: string }): Observable<Categoria> {
+    return this.http.post<Categoria>(this.apiUrl, dto);
+  }
+
+  actualizar(id: number, dto: { nombre: string; descripcion?: string }): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, dto);
+  }
+
+  activar(id: number): Observable<Categoria> {
+    return this.http.patch<Categoria>(`${this.apiUrl}/${id}/activar`, {});
+  }
+
+  desactivar(id: number): Observable<Categoria> {
+    return this.http.patch<Categoria>(`${this.apiUrl}/${id}/desactivar`, {});
+  }
 }
