@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-REPO_URL="https://github.com/camilo146/SIGEA.git"
+REPO_URL="https://github.com/Juan-David36/SIGEA.git"
 APP_DIR="/opt/sigea/SIGEA"
 ACTION="${1:-install}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
